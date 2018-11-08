@@ -11,7 +11,7 @@ $ git clone https://github.com/slorenzo/serverless-image-processing.git
 $ cd serverless-image-processing
 ```
 
-## Deployment
+### Deployment
 
 #### 1. Set environment variables
 
@@ -24,7 +24,7 @@ REGION=us-east-1
 BUCKET=your-bucket-here
 ```
 
-### 2. Deploy
+#### 2. Deploy
 
 ```bash
 $ docker-compose up --build
@@ -32,7 +32,7 @@ $ docker-compose up --build
 
 The command line will log out the service endpoints and all info.
 
-## Usage
+### Usage
 
 After the service has been deployed, you will receive a bucket endpoint.
 
