@@ -1,0 +1,46 @@
+service: image-processing-functions
+
+custom:
+  apigwBinary:
+    types:
+      - '*/*'
+
+plugins:
+  - serverless-plugin-tracing
+  - serverless-apigw-binary
+  - serverless-apigwy-binary
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${env:STAGE, 'dev'}
+  profile: serverless-admin
+  tracing: true
+  region: ${env:REGION, 'us-east-1'}
+  environment:
+    BUCKET: ${env:BUCKET}
+    REGION: ${env:REGION}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "s3:ListBucket"
+      Resource: "arn:aws:s3:::${env:BUCKET}"
+    - Effect: "Allow"
+      Action:
+        - "s3:PutObject"
+      Resource: "arn:aws:s3:::${env:BUCKET}"
+    - Effect: "Allow"
+      Action:
+        - "xray:PutTraceSegments"
+        - "xray:PutTelemetryRecords"
+      Resource:
+        - "*"
+
+functions:
+  processing:
+    handler: processing.handler
+    events:
+      - http:
+          path: processing
+          method: get
+          contentHandling: CONVERT_TO_BINARY
