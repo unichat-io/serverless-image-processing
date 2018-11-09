@@ -7,7 +7,7 @@
 #### Clone to your local machine:
 
 ```bash
-$ git clone https://github.com/slorenzo/serverless-image-processing.git
+$ git clone https://github.com/unichat-io/serverless-image-processing.git
 $ cd serverless-image-processing
 ```
 
