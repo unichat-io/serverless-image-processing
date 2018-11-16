@@ -5,6 +5,7 @@ jspm_packages
 # Serverless directories
 .serverless
 
-# Secrets
+# Env files
+.env
+.env.local
 secrets.json
-secrets.env
