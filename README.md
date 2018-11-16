@@ -7,7 +7,7 @@
 #### Clone to your local machine:
 
 ```bash
-$ git clone https://github.com/slorenzo/serverless-image-processing.git
+$ git clone https://github.com/unichat-io/serverless-image-processing.git
 $ cd serverless-image-processing
 ```
 
@@ -15,7 +15,8 @@ $ cd serverless-image-processing
 
 #### 1. Set environment variables
 
-Add your secret keys and configuration variables on `secrets.env`.
+Add your secret keys and configuration variables on `./secrets/.env`.
+
 ```env
 AWS_KEY=XXX
 AWS_SECRET=YYY
@@ -50,7 +51,7 @@ Or you can access the lambda function directly.
 
 Example 2:
 ```
-https://LAMBDA_ID.execute-api.REGION.amazonaws.com/dev/processing?f=IMAGE_NAME.jpg
+https://LAMBDA_ID.execute-api.REGION.amazonaws.com/STAGE/processing?f=IMAGE_NAME.jpg
 ```
 
 Complete guide of the different options:
@@ -63,11 +64,6 @@ Complete guide of the different options:
 | `q`                | Number | No       | Quality (between 1-100)
 | `t`                | String | No       | Convert to (default is webp) Available values are [webp, jpeg and png]
 
-## Made with ❤ by
-
-- Sebastian Lorenzo (Javascript developer)
-- E-mail: [SebastianLorenzo@gmail.com](mailto:SebastianLorenzo@gmail.com)
-- StackOverflow: [sebastian-lorenzo](http://stackoverflow.com/users/1741027/sebastian-lorenzo?tab=profile)
 
 ## License
 
