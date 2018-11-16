@@ -1,0 +1,23 @@
+{
+  "name": "serverless-image-processing",
+  "version": "2.0.0",
+  "main": "local.js",
+  "scripts": {
+    "dev": "micro-dev"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.357.0",
+    "dotenv": "^6.1.0",
+    "eslint": "^5.9.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "micro": "^9.3.3",
+    "micro-dev": "^3.0.0",
+    "micro-query": "^0.3.0",
+    "querystring": "^0.2.0",
+    "sharp": "^0.21.0"
+  }
+}
