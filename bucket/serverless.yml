@@ -8,7 +8,7 @@ provider:
   runtime: nodejs8.10
   stage: ${env:STAGE, 'dev'}
   profile: serverless-admin
-  region: us-east-1
+  region: ${env:REGION, 'us-east-1'}
   environment:
     BUCKET: ${env:BUCKET}
 

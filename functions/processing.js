@@ -1,37 +1,36 @@
-const Sharp = require('sharp');
+const preprocess = require('./helpers/preprocess')
+const { getS3 } = require('./helpers/s3')
 
-const Types = require('./utils/types');
-const ImageFetcher = require('./utils/s3-image-fetcher');
-const ImageProcessing = require('./utils/image-process');
+module.exports.handler = async (event, context, callback) => {
+  try {
+    if (!event.queryStringParameters) throw new Error('Needs Query String Parameters')
 
-module.exports.handler = (event, context, callback) => {
-  const imageFetcher = new ImageFetcher(process.env.BUCKET);
-  const imageProcessing = new ImageProcessing(Types, Sharp);
+    const f = event.queryStringParameters.f || ''
+    const q = Math.abs(event.queryStringParameters.q) || 100
+    const t = event.queryStringParameters.t || 'webp'
 
-  const fileName = event.queryStringParameters && event.queryStringParameters.f;
-  const quality = event.queryStringParameters && +event.queryStringParameters.q || 100;
-  const type = event.queryStringParameters && event.queryStringParameters.t;
+    const size = {
+      w: Math.abs(event.queryStringParameters.w) || null,
+      h: Math.abs(event.queryStringParameters.h) || null
+    }
 
-  const size = {
-    w: event && +event.queryStringParameters.w || null,
-    h: event && +event.queryStringParameters.h || null
-  };
+    const file = await getS3(f)
 
-  return imageFetcher.fetchImage(fileName)
-    .then(data => imageProcessing.exec(data.image, size, quality, type))
-    .then(data => {
-      const contentType = data.contentType;
-      const img = new Buffer(data.image.buffer, 'base64');
+    const processed = await preprocess(file.image, size, q, t)
 
-      callback(null, {
-        statusCode: 200,
-        headers: { 'Content-Type': contentType },
-        body: img.toString('base64'),
-        isBase64Encoded: true,
-      });
+    const buffer = Buffer.from(processed.image.buffer, 'base46')
+
+    callback(null, {
+      statusCode: 200,
+      headers: {
+        'Content-Type': processed.contentType,
+        'Access-Control-Allow-Origin': '*'
+      },
+      body: buffer.toString('base64'),
+      isBase64Encoded: true
     })
-    .catch(error => {
-      console.error('Error:', error);
-      callback(null, error);
-    });
-};
+  } catch (err) {
+    console.error(err)
+    callback(null, err)
+  }
+}

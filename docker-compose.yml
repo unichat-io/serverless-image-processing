@@ -5,4 +5,4 @@ services:
     volumes:
       - ./secrets:/deploy/secrets
     env_file:
-      - ./secrets/secrets.env
+      - ./secrets/.env
