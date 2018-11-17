@@ -1,4 +1,9 @@
+
 # Serverless Image Processing.
+
+<p align="center">
+  <img width="400" height="400" src="https://github.com/unichat-io/serverless-image-processing/blob/master/media/serverless-image-processing.png?raw=true" alt="Logo"/>
+</p>
 
 > Deploy with one command to AWS Lambda and S3 ⚡️
 
@@ -42,28 +47,42 @@ Let's upload an image so we have something to work with.
 $ aws s3 cp --acl public-read IMAGE_NAME.jpg s3://BUCKET
 ```
 
-Example 1:
+##### Example 1:
+
 ```
 http://BUCKET.s3-website.REGION.amazonaws.com/?f=IMAGE_NAME.jpg
 ```
 
 Or you can access the lambda function directly.
 
-Example 2:
+##### Example 2:
+
 ```
 https://LAMBDA_ID.execute-api.REGION.amazonaws.com/STAGE/processing?f=IMAGE_NAME.jpg
 ```
 
 Complete guide of the different options:
 
-| Query string name | Type   | Required | Description |
+| Query string | Type | Required | Description |
 | ------------------ | ------ | -------- | ----------- |
-| `f`                | String | Yes      | The complete image name uploaded to your S3 bucket (eg. placeholder.jpg)
+| `f`                | String | Yes      | The image name uploaded to your S3 bucket (eg. placeholder.jpg)
 | `w`                | Number | No       | Width
 | `h`                | Number | No       | Height
 | `q`                | Number | No       | Quality (between 1-100)
 | `t`                | String | No       | Convert to (default is webp) Available values are [webp, jpeg and png]
 
+
+## Credits
+
+Thanks to [Nadia Ilustraciones](http://nadiailustraciones.com) for donating the logo!
+
+## Authors
+
+- [Sebastián Lorenzo](https://github.com/slorenzo)
+
+## Sponsored by
+
+- [UNICHAT](https://unichat.io)
 
 ## License
 
