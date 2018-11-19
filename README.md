@@ -1,11 +1,12 @@
 
-# Serverless Image Processing.
+
+# Serverless Image Processing
 
 <p align="center">
   <img width="350" height="350" src="https://github.com/unichat-io/serverless-image-processing/blob/master/media/serverless-image-processing.png?raw=true" alt="Logo"/>
 </p>
 
-> Deploy with one command to AWS Lambda and S3 ⚡️
+<p align="center"><b>Deploy with one command-line to AWS Lambda and S3 ⚡️</b></p>
 
 ## Getting Started
 
