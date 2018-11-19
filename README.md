@@ -72,6 +72,15 @@ Complete guide of the different options:
 | `t`                | String | No       | Convert to (default is webp) Available values are [webp, jpeg and png]
 
 
+## Performance:
+
+Tested on my network (20MB)
+
+<p align="center">
+  <img width="500" src="https://github.com/unichat-io/serverless-image-processing/blob/master/media/performance.png?raw=true" alt="Performance"/>
+</p>
+
+
 ## Credits
 
 Thanks to [Nadia Ilustraciones](http://nadiailustraciones.com) for donating the logo!
